@@ -16,6 +16,7 @@
 let mainContent = document.querySelector("#main-content")
 let createTaskForm = document.querySelector("#create-task-form")
 let newTaskDescription = document.querySelector("#new-task-description")
+let dateDue = document.querySelector("#date-due")
 let list = document.querySelector("#list")
 let tasks = document.querySelector("#tasks")
 
@@ -29,5 +30,19 @@ function addTask(event) {
   event.preventDefault();
   var element = document.createElement('li')
   element.innerText = newTaskDescription.value
-  list.appendChild(element)
+  tasks.appendChild(element).appendChild(addDueDate());
+
+  let deleteButton = document.createElement('button')
+  deleteButton.innerText = "Delete"
+  element.appendChild(deleteButton)
+  deleteButton.addEventListener('click', function(){
+    deleteButton.parentElement.remove();
+  })
 }
+
+function addDueDate(){
+  let dueDate = document.createElement('p');
+  dueDate.innerText = dateDue.value;
+  return dueDate
+}
+// in addTask make a button, then add eventlistener to that button that deletes it's parent (the li)
